@@ -1,6 +1,6 @@
 import timeit
 
-SETUP_CODE = """
+# SETUP_CODE = """
 from random import randint
 
 import sys
@@ -11,42 +11,44 @@ import sys
 # Choose "x" amount of words from array and print in a sentence
 # Use " ".join to convert into a sentence string and print it out
 # close file
-"""
+# """
 
 
 
-TEST_CODE = """
+# TEST_CODE = """
 
 word_num = sys.argv[1]
 
 def dict_sentence(word_num):
-    with open("/usr/share/dict/words", 'r') as file:
+    with open("/usr/share/dict/words") as file:
         dict_word = file.read().splitlines()
 
-        random_num_array = list()
+        random_num_array = list() #line numbers that I want to read
 
         for _ in range(int(word_num)):
             random_num_array.append(randint(0, len(dict_word)-1))
 
         # print(dict_word)
 
-        for _ in range(int(word_num)):
-            for rand in random_num_array:
-                print(''.join(dict_word[rand]), end= ' ')
+        # for num in range(int(word_num)):
+
+        for rand in random_num_array:
+            # print(len(random_num_array))
+            print(''.join(dict_word[rand]), end= ' ')
 
 
 
 
 dict_sentence(word_num)
 
-"""
+# """
 
 
-
-times = timeit.repeat(setup = SETUP_CODE,
-                          stmt = TEST_CODE,
-                          number = 100)
-
-
-
-print('Function completed in time: {}'.format(min(times)))
+#
+# times = timeit.repeat(setup = SETUP_CODE,
+#                           stmt = TEST_CODE,
+#                           number = 100)
+#
+#
+#
+# print('Function completed in time: {}'.format(min(times)))
