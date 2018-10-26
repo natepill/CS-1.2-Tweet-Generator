@@ -1,6 +1,6 @@
 import timeit
 
-# SETUP_CODE = """
+SETUP_CODE = """
 from random import randint
 
 import sys
@@ -11,11 +11,11 @@ import sys
 # Choose "x" amount of words from array and print in a sentence
 # Use " ".join to convert into a sentence string and print it out
 # close file
-# """
+ """
 
 
 
-# TEST_CODE = """
+TEST_CODE = """
 
 word_num = sys.argv[1]
 
@@ -33,7 +33,7 @@ def dict_sentence(word_num):
         # for num in range(int(word_num)):
 
         for rand in random_num_array:
-            # print(len(random_num_array))
+
             print(''.join(dict_word[rand]), end= ' ')
 
 
@@ -41,14 +41,14 @@ def dict_sentence(word_num):
 
 dict_sentence(word_num)
 
-# """
+"""
 
 
-#
-# times = timeit.repeat(setup = SETUP_CODE,
-#                           stmt = TEST_CODE,
-#                           number = 100)
-#
-#
-#
-# print('Function completed in time: {}'.format(min(times)))
+
+times = timeit.repeat(setup = SETUP_CODE,
+                          stmt = TEST_CODE,
+                          number = 1)
+
+
+
+print('Function completed in time: {}'.format(min(times)))

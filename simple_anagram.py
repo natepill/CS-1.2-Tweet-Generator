@@ -12,12 +12,12 @@ import sys
     def anagram(word):
         counter = 0
 
-        anagram_possibilities
+        anagram_possibilities = list()
 
         while (counter < len(word)-1):
 
-            shift_right(self.word)
-            self.word = shift_right(word)
+            shift_right(word)
+            word = shift_right(word)
 
 
             for _ in range(0, counter):
