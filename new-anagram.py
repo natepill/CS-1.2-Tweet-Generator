@@ -2,6 +2,13 @@ import sys
 
 anagram_possibilities = list()
 
+def shift_right(word):
+    try:
+        return [word[-1]] + word[:-1]
+    except IndexError:
+        return word
+
+
 def anagram(word):
 
     for index, letter in enumerate(word):
@@ -10,16 +17,21 @@ def anagram(word):
 
         while counter != len(word):
             word.insert(counter, word.pop(index))
-            # l.insert(newindex, l.pop(oldindex)) trying to insert element and delete old placement
-            # print(word)
+
+            for _ in range(len(word)):
+                word[]
+                #need to append all possibilities of shifted elements with a new starting character
+
+
+
             anagram_possibilities.append("".join(word))
             counter += 1
 
-anagram(list("bart"))
+anagram(list("elvis"))
 
 print(anagram_possibilities)
 
-if 'brat' in anagram_possibilities:
+if 'lives' in anagram_possibilities:
     print("True")
 else:
     print("False")
