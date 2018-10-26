@@ -18,8 +18,8 @@ def anagram(word):
         while counter != len(word):
             word.insert(counter, word.pop(index))
 
-            for _ in range(len(word)):
-                word[]
+            # for _ in range(len(word)):
+            #     word[]
                 #need to append all possibilities of shifted elements with a new starting character
 
 
@@ -27,11 +27,11 @@ def anagram(word):
             anagram_possibilities.append("".join(word))
             counter += 1
 
-anagram(list("elvis"))
+anagram(list("bart"))
 
 print(anagram_possibilities)
 
-if 'lives' in anagram_possibilities:
+if 'brat' in anagram_possibilities:
     print("True")
 else:
     print("False")
