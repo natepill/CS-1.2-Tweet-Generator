@@ -6,8 +6,7 @@ def shift_right(word):
         return [word[-1]] + word[:-1]
     except IndexError:
         return word
-# https://stackoverflow.com/questions/34279048/python-move-all-elements-of-a-list-to-the-right-by-one
-
+# NOT CORRECT METHOD ^^^^ WE ARE NOT TRYING TO SHIFT CHARCTERS TO THE RIGHT, WE ARE TRYING TO REARRANGE THEM
 
 def anagram(word):
     counter = 0
@@ -16,7 +15,7 @@ def anagram(word):
 
     while (counter < len(word)-1):
 
-        word = shift_right(word)
+        # word = shift_right(word)
 
         for _ in range(len(word)-1):
             # print(counter)
@@ -26,5 +25,9 @@ def anagram(word):
         counter += 1
 
     print(' '.join(anagram_possibilities))
+    return anagram_possibilities
 
-anagram(list("hello"))
+
+
+
+anagram(list(sys.argv[1]))
