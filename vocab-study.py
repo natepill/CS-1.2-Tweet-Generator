@@ -24,7 +24,10 @@ print("What is the definition of {}?".format(rand_word))
 # user_guess = input("Definition: ")
 
 
-url = "https://www.dictionary.com/browse/"+ str(rand_word) + "?s=t"
+# url = "https://www.dictionary.com/browse/"+ str(rand_word) + "?s=t"
+
+url = "https://www.dictionary.com/browse/Metempsychosis?s=t"
+
 
 
 source_code =  requests.get(url)
@@ -33,13 +36,28 @@ html_text = source_code.text
 
 soup = BeautifulSoup(html_text, "html.parser")
 
-# print(html_text)
 
-meaning = soup.find('ol', {'class': 'css-zw8qdz e10vl5dg3'})
+# print(soup.prettify())
 
-if "css-zw8qdz e10vl5dg3" in html_text:
-    print("True")
+
+# meaning = soup.find_all('span' {'class': 'one-click'}, limit=1)
+# meaning = soup.find_all("span", {"class": "one-click"}, limit=1)
+meaning = soup.find('span')
+# meaning = soup.find('#initial-load-content > main > section > section > section > div.expand-container > div > section > ol > li')
+
+# if "css-zw8qdz e10vl5dg3" in html_text:
+#     print("True")
 
 print(meaning.content)
+
+
+
+with open('dict-entry-file', 'w') as file:
+    file.write(soup.prettify())
+
+
+
+
+# print(meaning)
 
 # print (dictionary.meaning(random_word()))
