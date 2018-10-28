@@ -1,7 +1,9 @@
-blog = ''
+import sys
 
-with open('blog-text') as file:
-    blog = file.read().split()
+text = ''
+
+with open(sys.argv[1]) as file:
+    text = file.read().split()
 
 # print(blog)
 
@@ -9,7 +11,7 @@ def histogram(text):
  # stores each unique word along with the number of times the word appears in the source text
     blog_words = []
 
-    for word in blog:
+    for word in text:
 
         if word not in blog_words:
             blog_words.append([word, 1])
@@ -42,6 +44,6 @@ def frequency(word, histogram):
 
 
 
-# print(histogram(blog))
-# print(unique_words(histogram(blog)))
-print(frequency('the', histogram(blog)))
+# print(histogram(sys.argv[1]))
+# print(unique_words(histogram(sys.argv[1])))
+# print(frequency('the', histogram(sys.argv[1])))

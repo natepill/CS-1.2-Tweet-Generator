@@ -1,5 +1,3 @@
-
-
 blog = ''
 
 with open('blog-text') as file:
@@ -13,7 +11,6 @@ def histogram(text):
 
     for word in text:
         words.append([word, 1])
-
 
     occurs = 0
     for word in text:
