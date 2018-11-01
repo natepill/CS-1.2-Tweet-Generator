@@ -32,7 +32,7 @@ def weighted_choice(weights):
             return weights[i]
 #https://eli.thegreenplace.net/2010/01/22/weighted-random-generation-in-python
 
-def true_random_selection(freq_list, word):
+def true_random_selection(freq_weight, word):
 
     random_prob = random.random()
     for word-probability in freq_list:
