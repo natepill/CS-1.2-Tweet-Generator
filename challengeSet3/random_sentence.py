@@ -23,6 +23,7 @@ def get_random_word(text_list):
     return random_word(text_list)
 
 
+#Takes random number of words to create a sentence and generates a sentence by picking random words and putting them together
 def generate_sentence(text_list):
     num_of_words = random_num_words()
     sentence_list = list()
@@ -33,8 +34,9 @@ def generate_sentence(text_list):
     return ' '.join(sentence_list)
 
 
-if __name__ == "__main__":
 
-    text_list = text_to_list('blog-text')
-    # print(get_random_word(text_list))
-    print(generate_sentence(text_list))
+# if __name__ == "__main__":
+#
+#     text_list = text_to_list('blog-text')
+#     # print(get_random_word(text_list))
+#     print(generate_sentence(text_list))
