@@ -29,7 +29,7 @@ def histogram(corpus_list):
 
 if __name__ == '__main__':
     weights_list = list()
-    for _ in range(1):
+    for _ in range(1000):
         weights_list.append(weighted_choice([2,3,5]))
         weights_list = map(str, weights_list)
         weights_list = list(weights_list)
