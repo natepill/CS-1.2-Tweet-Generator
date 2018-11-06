@@ -9,9 +9,9 @@ def histogram(text):
 
     word_counter = []
     for word in text:
-
         if word in word_counter:
-            word_counter.append
+
+            word_counter.append()
 
 
 

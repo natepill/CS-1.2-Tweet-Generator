@@ -40,7 +40,6 @@ def frequency(word, histogram):
             return occurence[1]
 
 
-
-# print(histogram(blog))
-print(unique_words(histogram(blog)))
+print(set(histogram(blog)))
+# print(unique_words(histogram(blog)))
 # print(frequency('to', histogram(blog)))

@@ -17,29 +17,31 @@ import sys
 
 # TEST_CODE = """
 
-word_num = sys.argv[1]
+
 
 def dict_sentence(word_num):
+
+    """
+    """
     with open("/usr/share/dict/words") as file:
-        dict_word = file.read().splitlines()
+        dict_words = file.read().splitlines()
 
-        random_num_array = list() #line numbers that I want to read
+    random_num_array = list() #line numbers that I want to read
 
-        for _ in range(int(word_num)):
-            random_num_array.append(randint(0, len(dict_word)-1))
+    for _ in range(int(word_num)):
+        random_num_array.append(randint(0, len(dict_words)-1))
 
-        # print(dict_word)
+    # print(dict_word)
+    # for num in range(int(word_num)):
 
-        # for num in range(int(word_num)):
-
-        for rand in random_num_array:
-
-            print(''.join(dict_word[rand]), end= ' ')
+    for rand in random_num_array:
+        print(''.join(dict_words[rand]), end= ' ')
 
 
-
+word_num = sys.argv[1]
 
 dict_sentence(word_num)
+# print("hello")
 
 # """
 

@@ -2,19 +2,18 @@ import sys
 
 text = ''
 
-with open(sys.argv[1]) as file:
+with open('blog-text', 'r') as file:
     text = file.read().split()
-
-# print(blog)
+    # print(text)
 
 def histogram(text):
  # stores each unique word along with the number of times the word appears in the source text
     blog_words = []
 
     for word in text:
-
         if word not in blog_words:
             blog_words.append([word, 1])
+    #Appending the same word multiple times to array
 
 
         #Ensures that there are no repeated words being incremented/added to the list
@@ -44,6 +43,6 @@ def frequency(word, histogram):
 
 
 
-# print(histogram(sys.argv[1]))
-# print(unique_words(histogram(sys.argv[1])))
-# print(frequency('the', histogram(sys.argv[1])))
+print(histogram(text))
+# print(unique_words(histogram(text)))
+# print(frequency('the', histogram(text)))
