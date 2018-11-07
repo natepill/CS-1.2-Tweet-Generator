@@ -1,5 +1,6 @@
 from random import randint
-from stochasticAttempt2 import *
+# from stochasticAttempt2 import *
+import stochasticAttempt2
 
 """
 Will read in text and then output sentence with random words from a text

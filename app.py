@@ -10,7 +10,7 @@ def hello_world():
     return generate_sentence(text_list)
 
 
-app.run(debug=True, port=33507)
+# app.run(debug=True, port=33507)
 
 # def text_to_list(file_name):
 #     return read_txt_file(file_name)
