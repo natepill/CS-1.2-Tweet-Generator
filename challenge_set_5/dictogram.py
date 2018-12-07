@@ -61,7 +61,8 @@ if __name__ == "__main__":
     blog.histogram(blog.corpus)
     # print(blog.histogram_of_words)
     # print(blog.frequency('is', blog.histogram_of_words))
-    print(blog.random_word(blog.histogram_of_words))
+    # print(blog.random_word(blog.histogram_of_words))
+    print(blog.histogram_of_words)
 
 
 # print(histogram(blog))
