@@ -20,6 +20,7 @@ class Dictogram():
 
         for word in corpus_list:
             histo[word] = 0
+
         for word in corpus_list:
             histo[word] += 1
 
@@ -38,6 +39,7 @@ class Dictogram():
                 return key
             else:
                 continue
+
 
 
     def unique_words(self):
