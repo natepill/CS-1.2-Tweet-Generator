@@ -1,72 +1,64 @@
-import sys
-from random import randint
+
+from __future__ import division, print_function  # Python 2 and 3 compatibility
 
 
-class Dictogram():
+class Dictogram(dict):
+    """Dictogram is a histogram implemented as a subclass of the dict type."""
 
-    def __init__(self, file_name):
-        self.corpus = self.read_txt_file(file_name)
-        self.histogram_of_words = self.histogram(self.corpus)
+    def __init__(self, word_list=None):
+        """Initialize this histogram as a new dict and count given words."""
+        super(Dictogram, self).__init__()  # Initialize this as a new dict
+        # Add properties to track useful word counts for this histogram
+        self.types = 0  # Count of distinct word types in this histogram
+        self.tokens = 0  # Total count of all word tokens in this histogram
+        # Count words in given list, if any
+        if word_list is not None:
+            for word in word_list:
+                self.add_count(word)
 
-    # reads in a text files, returns a list
-    def read_txt_file(self, file_name):
-        with open(file_name) as file:
-            corpus_list = file.read().split()
-            return corpus_list
+    def add_count(self, word, count=1):
+        """Increase frequency count of given word by given count amount."""
+        # TODO: Add word to dictogram
+        # TODO: Increase word frequency by count
+        if word not in self:
+            self[word] = count
+            self.types += 1
+        else:
+            self[word] += count
+        self.tokens += count
 
-    def histogram(self, corpus_list):
-     # stores each unique word along with the number of times the word appears in the source text
-        histo = {}
-
-        for word in corpus_list:
-            histo[word] = 0
-
-        for word in corpus_list:
-            histo[word] += 1
-
-        return histo
-
-    def random_word(self, histogram_dict):
-        '''Random word with weighted probability'''
-        counter = 0
-        # Random number between 0 and the sum total of all frequencies
-        hist_sum = sum(histogram_dict.values())
-        rand_sum = randint(0,hist_sum - 1)
-
-        for key, value in histogram_dict.items():
-            counter += value
-            if counter > rand_sum:
-                return key
-            else:
-                continue
+    def frequency(self, word):
+        """Return frequency count of given word, or 0 if word is not found."""
+        # TODO: Retrieve word frequency count
+        if word not in self:
+            return 0
+        else:
+            return self[word]
 
 
 
-    def unique_words(self):
-        # takes a histogram argument and returns the total count of unique words in the histogram.
-        # return histogram.keys()
-        unique_count = 0
-        for word in self.histogram_of_words:
-            unique_count += 1
-        return unique_count
-
-
-    def frequency(self, word, histogram):
-        # takes a word and histogram argument and returns the number of times that word appears in a text.
-        return self.histogram_of_words[word]
+def print_histogram(word_list):
+    histogram = Dictogram(word_list)
+    print('dictogram: {}'.format(histogram))
+    print('{} tokens, {} types'.format(histogram.tokens, histogram.types))
 
 
 
+def main():
+    import sys
+    arguments = sys.argv[1:]  # Exclude script name in first argument
+    if len(arguments) >= 1:
+        # Test histogram on given arguments
+        print_histogram(arguments)
+    else:
+        # Test histogram on letters in a word
+        word = 'abracadabra'
+        print_histogram(list(word))
+        # Test histogram on words in a classic book title
+        fish_text = 'one fish two fish red fish blue fish'
+        print_histogram(fish_text.split())
 
-if __name__ == "__main__":
-    blog = Dictogram('blog-text')
-    blog.histogram(blog.corpus)
-    # print(blog.histogram_of_words)
-    # print(blog.frequency('is', blog.histogram_of_words))
-    # print(blog.random_word(blog.histogram_of_words))
-    print(blog.histogram_of_words)
 
 
-# print(histogram(blog))
-# print(unique_words(histogram(blog)))
-# print(frequency('was', histogram(blog)))
+if __name__ == '__main__':
+    main()

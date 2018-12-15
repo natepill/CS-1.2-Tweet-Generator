@@ -1,57 +1,50 @@
-from real_dict import Dictogram
+from dictogram import Dictogram
 from rando_word import random_word
-
 import sys
 import random
-
 
 class MarkovChain:
 
     def build_markov(self):
-
-        with open(sys.argv[1]) as f:
-            content = f.read().split()
-
         dict = {}
+        with open(sys.argv[1]) as file:
+            corpus = file.read().split()
 
         i=0
-        while i+1 < len(content):
-            word = content[i]
+        while i+1 < len(corpus):
+            word = corpus[i]
             if dict.get(word) == None:
-                next_word = content[i+1]
+                next_word = corpus[i+1]
                 list = [next_word]
                 histogram = Dictogram(list)
                 dict[word] = histogram
             else:
-                next_word = content[i+1]
+                next_word = corpus[i+1]
                 dict.get(word).add_count(next_word)
             i += 1
 
         return dict
 
-    def random_walk(self, dict):
-        random_walk = ""
+    def generate_sentence(self, dict):
+        sentence = ""
         list_of_keys = list(dict.keys())
-        chosen_number = random.randint(0, len(list_of_keys)-1)
-        chosen_word = list_of_keys[chosen_number]
-        random_walk = random_walk + chosen_word
+        index = random.randint(0, len(list_of_keys)-1)
+        chosen_word = list_of_keys[index]
+        sentence = sentence + chosen_word
 
         for _ in range(0,20):
             dictogram = dict.get(chosen_word)
             print(dictogram)
             new_word = random_word(self, dictogram)
-
-            random_walk = random_walk +" "+ new_word
+            sentence = sentence +" "+ new_word
             chosen_word = new_word
 
-        print(random_walk)
-        return random_walk
+        print(sentence)
+        return sentence
 
 
 
 if __name__ == '__main__':
     markov = MarkovChain()
     dict = markov.build_markov()
-    markov.random_walk(dict)
-    # dict = markov.second_order()
-    # markov.second_order_random_walk(dict)
+    markov.generate_sentence(dict)
