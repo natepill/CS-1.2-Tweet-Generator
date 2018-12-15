@@ -1,7 +1,9 @@
-from dictogram import Dictogram
+from real_dict import Dictogram
+from rando_word import random_word
+
 import sys
 import random
-# from random_sampling import random_sampling
+
 
 class MarkovChain:
 
@@ -36,7 +38,9 @@ class MarkovChain:
 
         for _ in range(0,20):
             dictogram = dict.get(chosen_word)
-            new_word = random_word(dictogram)
+            print(dictogram)
+            new_word = random_word(self, dictogram)
+
             random_walk = random_walk +" "+ new_word
             chosen_word = new_word
 
