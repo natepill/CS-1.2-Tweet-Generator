@@ -1,6 +1,7 @@
 from dictogram import Dictogram
 from rando_word import random_word
 import random
+import re
 import sys
 
 
@@ -27,12 +28,23 @@ class MarkovChain:
         return markovChain
 
 
+    def cleanup(self, text):
+        with open(text) as corpus:
+            # print(source_text.read())
+            no_chapters = re.sub('[A-Z]{3,}', ' ', corpus.read())
+            remove_periods = re.sub('(\s\.){4,}', '', no_chapters)
+            new_text = re.sub('\*', '', remove_periods)
+
+        return new_text
+    #Faith's cleanup
+
+
     def secondOrderMarkovChain(self):
 
         with open(sys.argv[1]) as file:
             corpus = file.read().split()
 
-            markovChain = {}
+            markovChain = dict()
 
 
             i = 0
@@ -55,11 +67,14 @@ class MarkovChain:
     #     sentence = ""
     #     list_of_keys = list(markovChain.keys())
     #     segment = list_of_keys[random.randint(0, len(list_of_keys)-1)]
+    #
     #     sentence = sentence + segment[0] + segment[1]
     #
     #     for _ in range(0,40):
     #         dictogram = markovChain.get(segment)
-    #         new_word = random_word(self, dictogram)
+    #         print('THIS IS THE Dictogram:', dictogram)
+    #
+    #         new_word = random_word(dictogram)
     #         sentence = sentence +" "+ new_word
     #         segment = (segment[1], new_word)
     #
@@ -67,7 +82,7 @@ class MarkovChain:
     #     return sentence
 
 
-    def nth_order_markov(order, text_list):
+    def nth_order_markov(self, order, text_list):
         """ this function takes in a word and checks to see what words come after it
         to determine the word sequence for our generated markov chain"""
         markov_dict = dict()
@@ -88,10 +103,6 @@ class MarkovChain:
 
 
 
-
-
-
-
     def generate_sentence(self, dict):
         sentence = ""
         list_of_keys = list(dict.keys())
@@ -102,7 +113,7 @@ class MarkovChain:
         for _ in range(0,20):
             dictogram = dict.get(chosen_word)
             print(dictogram)
-            new_word = random_word(self, dictogram)
+            new_word = random_word(dictogram)
             sentence = sentence +" "+ new_word
             chosen_word = new_word
 
@@ -113,5 +124,12 @@ class MarkovChain:
 
 if __name__ == '__main__':
     markov = MarkovChain()
-    dict = markov.secondOrderMarkovChain()
-    markov.secondOrderSentence(dict)
+
+    text_list = markov.cleanup('corpus-text').split()
+    print('THIS IS TEXT_LIST:', text_list)
+
+    print('\n\n\n\n')
+    print(markov.nth_order_markov(2, text_list))
+
+    # markovChain = markov.secondOrderMarkovChain()
+    # markov.secondOrderSentence(markovChain)

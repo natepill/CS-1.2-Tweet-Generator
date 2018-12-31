@@ -1,7 +1,7 @@
 from random import randint
 
 
-def random_word(self, histogram_dict):
+def random_word(histogram_dict):
     '''Random word with weighted probability'''
     counter = 0
     # Random number between 0 and the sum total of all frequencies
