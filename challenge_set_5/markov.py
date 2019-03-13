@@ -126,9 +126,9 @@ if __name__ == '__main__':
     markov = MarkovChain()
 
     text_list = markov.cleanup('corpus-text').split()
-    print('THIS IS TEXT_LIST:', text_list)
+    # print('THIS IS TEXT_LIST:', text_list)
 
-    print('\n\n\n\n')
+    # print('\n\n\n\n')
     print(markov.nth_order_markov(2, text_list))
 
     # markovChain = markov.secondOrderMarkovChain()

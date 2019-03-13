@@ -2,7 +2,7 @@ import sys
 
 text = ''
 
-with open('blog-text', 'r') as file:
+with open('blog-text.txt', 'r') as file:
     text = file.read().split()
     # print(text)
 

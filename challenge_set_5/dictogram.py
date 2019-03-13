@@ -16,16 +16,18 @@ class Dictogram(dict):
             for word in word_list:
                 self.add_count(word)
 
-    def add_count(self, word, count=1):
-        """Increase frequency count of given word by given count amount."""
-        # TODO: Add word to dictogram
-        # TODO: Increase word frequency by count
-        if word not in self:
-            self[word] = count
-            self.types += 1
-        else:
-            self[word] += count
-        self.tokens += count
+    def add_count(self, word_list, count=1):
+        """Increase frequency count of given word by given count amount"""
+        for word in word_list:
+            # if word is not in dictogram, add word and increment count, tokens, types
+            if word not in self:
+                self[word] = count
+                self.types += count
+                self.tokens += count
+            # if word is in dictogram, increment count, tokens
+            else:
+                self[word] += count
+                self.tokens += count
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
